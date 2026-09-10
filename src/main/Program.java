@@ -1,5 +1,11 @@
 package main;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Program {
 
     public static void main(String[] args) {
@@ -12,9 +18,9 @@ public class Program {
         int k = haromszogKerulet(a, b, c);
         double t = haromszogTerulet(a, b, c);
 
-        String szoveg = "A %d, %d, %d oldalú háromszög".formatted(a, b, c);
-        szoveg += "\n\tkerülete: %d, területe: %.2f".formatted(k, t);
-        megjelenites(szoveg);
+        String adat = "A %d, %d, %d oldalú háromszög".formatted(a, b, c);
+        adat += "\n\tkerülete: %d, területe: %.2f".formatted(k, t);
+        megjelenites(adat);
     }//main
 
     private static int haromszogKerulet(int a, int b, int c) {
@@ -29,8 +35,18 @@ public class Program {
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
-    private static void megjelenites(String szoveg) {
-        System.out.println(szoveg);
+    private static void megjelenites(String adat) {
+        try {
+            boolean jog = true;
+            if (!jog) {
+                throw new IOException("Nincs írási jog!");
+            }
+            //Files.write(Path.of("kimenet.txt"), adat.getBytes());
+        } catch (IOException ex) {
+            //API generálta - Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Nem sikerült a fájlba írás!");
+            System.err.println("Hiba oka: " + ex.getMessage());
+        }
     }
 
 }//class

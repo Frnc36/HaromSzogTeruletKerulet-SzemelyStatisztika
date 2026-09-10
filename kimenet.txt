@@ -1,0 +1,2 @@
+A 5, 5, 5 oldalú háromszög
+	kerülete: 15, területe: 7,48
