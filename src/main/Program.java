@@ -34,6 +34,10 @@ public class Program {
         int s = haromszogKerulet(a, b, c) / 2;
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
+    // függvény túlterhelés: azanos név, eltéreő paraméterek/számai
+    private static double haromszogTerulet(int alap, int magassag) {
+        return alap * magassag / 2;
+    }
 
     private static void megjelenites(String adat) {
         try {
@@ -41,7 +45,7 @@ public class Program {
             if (!jog) {
                 throw new IOException("Nincs írási jog!");
             }
-            //Files.write(Path.of("kimenet.txt"), adat.getBytes());
+            Files.write(Path.of("kimenet.txt"), adat.getBytes());
         } catch (IOException ex) {
             //API generálta - Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Nem sikerült a fájlba írás!");
