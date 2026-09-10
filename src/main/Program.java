@@ -9,9 +9,21 @@ import java.util.logging.Logger;
 public class Program {
 
     public static void main(String[] args) {
-        int a = 5;
-        int b = 5;
+        feladat();
+    }//main
+
+    private static void feladat() throws IllegalArgumentException {
+        int a = 3;
+        int b = 4;
         int c = 5;
+
+        if (!(pozitivSzam(a) && pozitivSzam(b) && pozitivSzam(c))) {
+            throw new IllegalArgumentException("nem lehet negatív a szám");
+        }
+
+        if (!szerkesztheto(a, b, c)) {
+            throw new IllegalArgumentException("nem létezik");
+        }
 
 //        System.out.println(haromszogKerulet(a, b, c));
 //        System.out.println(haromszogTerulet(a, b, c));
@@ -21,7 +33,7 @@ public class Program {
         String adat = "A %d, %d, %d oldalú háromszög".formatted(a, b, c);
         adat += "\n\tkerülete: %d, területe: %.2f".formatted(k, t);
         megjelenites(adat);
-    }//main
+    }
 
     private static int haromszogKerulet(int a, int b, int c) {
         //int kerulet = a + b + c;
@@ -34,6 +46,7 @@ public class Program {
         int s = haromszogKerulet(a, b, c) / 2;
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
+
     // függvény túlterhelés: azanos név, eltéreő paraméterek/számai
     private static double haromszogTerulet(int alap, int magassag) {
         return alap * magassag / 2;
@@ -41,6 +54,14 @@ public class Program {
 
     private static void megjelenites(String szoveg) {
         System.out.println(szoveg);
-            }
+    }
+
+    private static boolean szerkesztheto(int a, int b, int c) {
+        return a + b > c && a + c > b && b + c > a;
+    }
+
+    private static boolean pozitivSzam(double szam) {
+        return szam > 0;
+    }
 
 }//class
