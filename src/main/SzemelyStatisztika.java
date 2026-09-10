@@ -1,6 +1,7 @@
 package main;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 public class SzemelyStatisztika {
 
@@ -9,6 +10,9 @@ public class SzemelyStatisztika {
     }//main
 
     private static void Program() throws IllegalArgumentException {
+//        int velszam = randomSzamGenerator();
+        
+
         String nev = "Fani";
         int szulEv = 2004;
         LocalDate maiEv = LocalDate.now();
@@ -26,7 +30,16 @@ public class SzemelyStatisztika {
     }
 
     private static void koszontes(String s) {
-        System.out.println(s);
+        koszontes(s, false);
+    }
+
+    //private static String koszontes(String[] s, int velszam)
+    private static String koszontes(String[] s, boolean keveres) {
+        //return s[velszam];
+        String t[] = {"Szia", "Szius", "Hello"};
+        if (keveres) {
+            int i = (int) (Math.random() * t.length);
+        }
     }
 
     private static int eletKorSzamitas(int szulEv, LocalDate maiEv) {
@@ -46,4 +59,8 @@ public class SzemelyStatisztika {
         return szulEv > 0;
     }
 
+//    private static int randomSzamGenerator() {
+//        Random velszam = new Random();
+//        return velszam.nextInt(2);
+//    }
 }//class
