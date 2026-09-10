@@ -39,18 +39,8 @@ public class Program {
         return alap * magassag / 2;
     }
 
-    private static void megjelenites(String adat) {
-        try {
-            boolean jog = true;
-            if (!jog) {
-                throw new IOException("Nincs írási jog!");
+    private static void megjelenites(String szoveg) {
+        System.out.println(szoveg);
             }
-            Files.write(Path.of("kimenet.txt"), adat.getBytes());
-        } catch (IOException ex) {
-            //API generálta - Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Nem sikerült a fájlba írás!");
-            System.err.println("Hiba oka: " + ex.getMessage());
-        }
-    }
 
 }//class
